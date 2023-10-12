@@ -6,12 +6,11 @@ import Book from "./models/bookModel.js";
 const port = PORT || 3000;
 const app = express();
 
-app.use(express.json())
+app.use(express.json());
 
-app.get('/',(req,res) => {
-  res.send('home page')
-}
-)
+app.get("/", (req, res) => {
+  res.send("home page");
+});
 
 app.post("/books", async (req, res) => {
   try {
@@ -30,6 +29,18 @@ app.post("/books", async (req, res) => {
     return res.status(201).send(book);
   } catch (error) {
     console.log(error.message);
+    res.status(500).send(error.message);
+  }
+});
+
+app.get("/books", async (req, res) => {
+  try {
+    const books = await Book.find({});
+    res.status(200).json({
+        count:books.length,
+        data:books
+    });
+  } catch (error) {
     res.status(500).send(error.message);
   }
 });
