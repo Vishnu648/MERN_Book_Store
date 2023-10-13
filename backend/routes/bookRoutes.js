@@ -43,7 +43,7 @@ router.get("/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const book = await Book.findById(id);
-    res.status(200).json({
+    res.status(200).send({
       book,
     });
   } catch (error) {

@@ -17,7 +17,7 @@ app.get("/", (req, res) => {
 app.use(cors({
   origin: 'http://localhost:5173',
   methods:['GET','POST','PUT','DELETE'],
-  allowedHeaders:['content-type']
+  // allowedHeaders:['content-type']
 }))
 
 app.use('/books',bookRoutes)
