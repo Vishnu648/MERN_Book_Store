@@ -19,6 +19,8 @@ const ShowBook = () => {
         setLoading(false);
       })
       .catch((error) => {
+        setLoading(false);
+        alert('something went wrong')
         return console.log(error.message);
       });
   }, []);
@@ -49,7 +51,7 @@ const ShowBook = () => {
           </div>
           <div className="my-4">
             <span className="text-xl mr-4 text-white">created At:</span>
-            <span>{ new Date(books.createdAt).toString()}</span>
+            <span>{new Date(books.createdAt).toString()}</span>
           </div>
         </div>
       )}
