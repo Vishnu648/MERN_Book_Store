@@ -1,30 +1,23 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React from 'react';
+import {Routes,Route} from "react-router-dom"
+import {
+  CreateBook,
+  DeleteBook,
+  EditBook,
+  Home,
+  ShowBook
+} from "./pages/index.js"
 
 const App = () => {
-
-  const [datas, setDatas] = useState([]);
-  
-  useEffect(() => {
-    
-  axios.get('http://localhost:4000/books')
-  .then(response=>setDatas(response.data.data))
-  }, [])
-  
-
   return (
-    <div>
-      {
-        datas.map((d) => {
-          return(
-            <h2 key={d._id}>{d.title}</h2>
-          )
-        }
-        )
-      }
-      APP
-    </div>
-  )
+    <Routes>
+      <Route path="/" element={<Home/>}/>
+      <Route path="/books/create" element={<CreateBook/>}/>
+      <Route path="/books/details/:id" element={<ShowBook/>}/>
+      <Route path="/books/edit/:id" element={<EditBook/>}/>
+      <Route path="/books/delete/:id" element={<DeleteBook/>}/>
+    </Routes>
+  ) 
 }
 
 export default App
