@@ -52,7 +52,7 @@ const Home = () => {
           <tbody>
             {books.map((b, index) => {
               return (
-                <tr key={books._id} className="h-8">
+                <tr key={b._id} className="h-8">
                   <td className="border text-center border-white">{index + 1}</td>
                   <td className="border text-center border-white">{b.title}</td>
                   <td className="border text-center border-white">{b.author}</td>
